@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Employee;
 
 class EmployeeController extends Controller
 {
@@ -13,7 +14,11 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        
+        //return Employee::all();
+        $data['emp'] = Employee::all();
+        //$data['emp'] = Employee::orderBy('name', 'asc')->get();
+        //$data['emp'] = Employee::orderBy('name', 'asc')->take(2)->get();
+        return View('Employee.Index', $data);
     }
 
     /**
