@@ -49,8 +49,8 @@ class EmployeeController extends Controller
 
         $emp = new Employee();
         $emp->name = $request->input('name');
-        $emp->gender = $request->input('gender');
         $emp->age = $request->input('age');
+        $emp->gender = $request->input('gender');
         $emp->designation = $request->input('designation');
         $emp->save();
         return redirect('/employee')->with('Insert_alert', 'Your data has been Inserted');
@@ -75,7 +75,9 @@ class EmployeeController extends Controller
      */
     public function edit($id)
     {
-        //
+        $emp = Employee::find($id);
+        //return $emp;
+        return View('Employee.Edit')->with('emp', $emp);
     }
 
     /**
@@ -87,7 +89,22 @@ class EmployeeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
+        $request->validate([
+
+            'name'=>'required',
+            'age'=>'required',
+            'gender'=>'required',
+            'designation'=>'required',
+        ]);
+
+        $emp = Employee::find($id);
+        $emp->name = $request->input('name');
+        $emp->age = $request->input('age');
+        $emp->gender = $request->input('gender');
+        $emp->designation = $request->input('designation');
+        $emp->save();
+        return redirect('/employee')->with('Edit_alert', 'Your data has been Updated.');
     }
 
     /**

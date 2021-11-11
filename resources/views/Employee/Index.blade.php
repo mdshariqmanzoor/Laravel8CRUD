@@ -10,6 +10,7 @@
       <th scope="col">Age</th>
       <th scope="col">Gender</th>
       <th scope="col">Designation</th>
+      <th scope="col" colspan="2">Your Actions</th>
     </tr>
   </thead>
   <tbody>
@@ -22,6 +23,8 @@
       <td>{{ $e['age'] }}</td>
       <td>{{ $e['gender'] }}</td>
       <td>{{ $e['designation'] }}</td>
+      <td><a href="employee/{{ $e['id'] }}/edit" class="btn btn btn-light btn-sm">Edit</a></td>
+      <td>Delete</td>
     </tr>
 
     @endforeach
