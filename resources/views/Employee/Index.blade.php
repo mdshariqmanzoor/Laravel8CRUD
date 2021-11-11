@@ -23,8 +23,13 @@
       <td>{{ $e['age'] }}</td>
       <td>{{ $e['gender'] }}</td>
       <td>{{ $e['designation'] }}</td>
-      <td><a href="employee/{{ $e['id'] }}/edit" class="btn btn btn-light btn-sm">Edit</a></td>
-      <td>Delete</td>
+
+      <td><a href="employee/{{ $e['id'] }}/edit" class="btn btn-outline-secondary btn-sm">Edit</a></td>
+      <form action="{{ route('employee.destroy', $e['id']) }}" method="POST" onsubmit="return confirmDelete()">
+        @csrf
+        @method('DELETE')
+        <td><input type="submit" class="btn btn-outline-danger btn-sm" name="submit" id="submit"></td>
+      </form>
     </tr>
 
     @endforeach

@@ -115,6 +115,9 @@ class EmployeeController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $emp = Employee::find($id);
+        //return $emp;
+        $emp->delete();
+        return redirect('/employee')->with('Delete_alert', 'Your data has been Deleted.');
     }
 }

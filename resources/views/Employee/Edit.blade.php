@@ -8,7 +8,7 @@
 
 <form action="{{ route('employee.update', $emp->id) }}" method="POST">
   @csrf
-  @method('PATCH')
+  @method('PUT')
   <div class="form-group">
     <label for="name">Name</label>
     <input type="text" class="form-control" name="name" id="name" value="{{ $emp->name }}" placeholder="Enter Your Name">
