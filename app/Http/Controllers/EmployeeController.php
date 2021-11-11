@@ -28,7 +28,7 @@ class EmployeeController extends Controller
      */
     public function create()
     {
-        //
+        return View('Employee.Create');
     }
 
     /**
@@ -39,7 +39,21 @@ class EmployeeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+
+            'name'=>'required',
+            'age'=>'required',
+            'gender'=>'required',
+            'designation'=>'required',
+        ]);
+
+        $emp = new Employee();
+        $emp->name = $request->input('name');
+        $emp->gender = $request->input('gender');
+        $emp->age = $request->input('age');
+        $emp->designation = $request->input('designation');
+        $emp->save();
+        return redirect('/employee')->with('Insert_alert', 'Your data has been Inserted');
     }
 
     /**
